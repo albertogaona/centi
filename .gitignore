@@ -1,12 +1,13 @@
 build/*
 gradle/*
 bin/*
-.gradle/*
+.gradle/
 .idea/*
-.settings/*
+.settings/
 centi.iml
 centi.ipr
 centi.iws
 gradlew
 gradlew.bat
+.classpath
 
