@@ -1,6 +1,6 @@
-build/**
-gradle/**
-bin/**
+build/*
+gradle/*
+bin/*
 centi.iml
 centi.ipr
 centi.iws

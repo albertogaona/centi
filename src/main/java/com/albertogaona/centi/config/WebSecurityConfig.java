@@ -4,10 +4,8 @@ import javax.sql.DataSource;
 
 import org.apache.commons.dbcp.BasicDataSource;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;
-import org.springframework.context.annotation.PropertySource;
 import org.springframework.core.env.Environment;
 import org.springframework.security.authentication.encoding.ShaPasswordEncoder;
 import org.springframework.security.config.annotation.authentication.builders.AuthenticationManagerBuilder;
@@ -22,7 +20,6 @@ import com.albertogaona.centi.service.AuthenticationService;
 @ComponentScan("com.albertogaona.centi")
 @EnableWebSecurity
 @EnableGlobalMethodSecurity(prePostEnabled=true)
-/*@PropertySource("classpath:jdbc.properties")*/
 public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
 	
 	@Autowired
@@ -55,15 +52,4 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
 				.passwordEncoder(encoder);
 	}
 
-	/*
-	@Bean
-	public DataSource getDataSource() {
-		BasicDataSource dataSource = new BasicDataSource();
-		dataSource.setDriverClassName(env.getProperty("jdbc.driverClassName"));
-		dataSource.setUrl(env.getProperty("jdbc.url"));
-		dataSource.setUsername(env.getProperty("jdbc.username"));
-		dataSource.setPassword(env.getProperty("jdbc.password"));
-		return dataSource;
-	}
-	*/
 }
