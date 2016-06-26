@@ -1,0 +1,14 @@
+spring:
+  profiles.active: dev
+
+---
+
+spring:
+  profiles: dev
+  thymeleaf.cache: false
+
+---
+
+spring:
+  profiles: prod
+  # note that thymeleaf.cache: true default value is used!

@@ -1,0 +1,32 @@
+buildscript {
+	repositories {
+		mavenCentral()
+	}
+	
+	dependencies {
+		classpath("org.springframework.boot:spring-boot-gradle-plugin:1.3.5.RELEASE")
+	}
+}
+
+
+apply plugin: 'java'
+apply plugin: 'eclipse'
+apply plugin: 'spring-boot'
+
+repositories {
+	mavenCentral()
+}
+
+dependencies {
+	compile("org.springframework.boot:spring-boot-starter-thymeleaf")
+	compile("org.springframework.boot:spring-boot-devtools")
+	compile("org.springframework.boot:spring-boot-starter-security")
+	compile 'org.springframework.boot:spring-boot-starter-jdbc'	
+	compile("nz.net.ultraq.thymeleaf:thymeleaf-layout-dialect:1.2.1")
+  	compile 'mysql:mysql-connector-java:5.1.31'
+    compile 'commons-dbcp:commons-dbcp:1.4'	
+}
+
+task wrapper(type: Wrapper) {
+	gradleVersion = '2.3'
+}
