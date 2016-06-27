@@ -16,9 +16,17 @@
 
 package com.albertogaona.centi.controller;
 
+import java.util.ArrayList;
+import java.util.List;
+
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.ResponseBody;
+
+import com.albertogaona.centi.bean.Device;
+import com.albertogaona.centi.service.DeviceService;
 
 /**
  * Created by alberto on 19/06/16.
@@ -26,6 +34,9 @@ import org.springframework.web.bind.annotation.RequestMapping;
 @Controller
 public class DefaultController {
 
+	@Autowired
+	DeviceService deviceService;
+	
     @RequestMapping("/")
     public String index(Model model) {
         return "index";
@@ -34,6 +45,11 @@ public class DefaultController {
     @RequestMapping("/login")
     public String login(Model model) {
         return "login";
+    }
+    
+    @RequestMapping("/getDevices")
+    public @ResponseBody List<Device> getDevices(Model model) {
+    	return deviceService.findAll();
     }
     
 

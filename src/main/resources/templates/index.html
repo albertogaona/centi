@@ -5,7 +5,8 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <title >Centi - Control de flotas</title>
-    <link type="text/css" rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" />
+    <ling rel="stylesheet" href="https://cdn.datatables.net/1.10.12/css/jquery.dataTables.min.css" />
 </head>
 <body>
 <style>
@@ -19,25 +20,30 @@
     <div th:replace="fragments/header :: header">
         ...
     </div>
-    <div class="container" layout:fragment="content">
-        <div class="jumbotron">
-            <!-- ============================================================================ -->
-            <!-- This content is only used for static prototyping purposes (natural templates)-->
-            <!-- and is therefore entirely optional, as this markup fragment will be included -->
-            <!-- from "fragments/header.html" at runtime.                                     -->
-            <!-- =========================================================================== -->
-            <h1><span th:text="${name}" ></span>: Static content for prototyping purposes only</h1>
-            <p>
-                Lorem ipsum dolor sit amet, consectetur adipiscing elit.
-                Praesent scelerisque neque neque, ac elementum quam dignissim interdum.
-                Phasellus et placerat elit. Lorem ipsum dolor sit amet, consectetur adipiscing elit.
-                Praesent scelerisque neque neque, ac elementum quam dignissim interdum.
-                Phasellus et placerat elit.
-            </p>
+    <div style="display: table; width:100%" layout:fragment="content">
+        <div style="display: table-cell;" class="col-lg-4">
+        	<table id="device-grid" style="width: 100%">
+        		<thead>
+        			<tr>
+        				<th>id</th>
+        				<th>Name</th>
+        				<th>Last Update</th>
+        			</tr>
+        		</thead>
+        	</table>
+        </div>
+        <div style="display: table-cell:" class="col-lg-8">
+        	Map
         </div>
     </div>
 
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
 	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
+	<script src="https://cdn.datatables.net/1.10.12/js/jquery.dataTables.min.js"></script>
+	<script>
+	$(function() {
+		$("#device-grid").DataTable();
+	});
+	</script>
 </body>
 </html>
