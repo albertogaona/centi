@@ -21,10 +21,11 @@ dependencies {
 	compile("org.springframework.boot:spring-boot-starter-thymeleaf")
 	compile("org.springframework.boot:spring-boot-devtools")
 	compile("org.springframework.boot:spring-boot-starter-security")
-	compile 'org.springframework.boot:spring-boot-starter-jdbc'	
+	compile("org.springframework.boot:spring-boot-starter-jdbc")	
 	compile("nz.net.ultraq.thymeleaf:thymeleaf-layout-dialect:1.2.1")
-  	compile 'mysql:mysql-connector-java:5.1.31'
-    compile 'commons-dbcp:commons-dbcp:1.4'	
+  	compile("mysql:mysql-connector-java:5.1.31")
+    compile("commons-dbcp:commons-dbcp:1.4")
+    testCompile("org.springframework.boot:spring-boot-starter-test")	
 }
 
 task wrapper(type: Wrapper) {

@@ -18,7 +18,13 @@ public class DeviceDao {
 	JdbcTemplate jdbcTemplate;
 	
 	public List<Device> findAll() {
-		return jdbcTemplate.query("SELECT id, name, lat, lng, last_update FROM device", new RowMapper<Device>() {
+		return jdbcTemplate.query(""
+				+ "SELECT id, "
+				+ "name, "
+				+ "lat, "
+				+ "lng, "
+				+ "last_update "
+				+ "FROM device", new RowMapper<Device>() {
 
 			@Override
 			public Device mapRow(ResultSet rs, int rowNum) throws SQLException {

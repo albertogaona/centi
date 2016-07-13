@@ -52,6 +52,7 @@ public class DefaultController {
     	return deviceService.findAll();
     }
     
+    
 
 }
 
