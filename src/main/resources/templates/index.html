@@ -6,7 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <title >Centi - Control de flotas</title>
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" />
-    <ling rel="stylesheet" href="https://cdn.datatables.net/1.10.12/css/jquery.dataTables.min.css" />
+    <link rel="stylesheet" href="https://cdn.datatables.net/1.10.12/css/dataTables.bootstrap.min.css" />
 </head>
 <body>
 <style>
@@ -38,11 +38,18 @@
     </div>
 
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
-	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
 	<script src="https://cdn.datatables.net/1.10.12/js/jquery.dataTables.min.js"></script>
+	<script src="https://cdn.datatables.net/1.10.12/js/dataTables.bootstrap.min.js"></script>
 	<script>
 	$(function() {
-		$("#device-grid").DataTable();
+		$("#device-grid").DataTable({
+			"ajax": "/getDevices",
+			"columns": [
+			   { "data": "id"},
+			  { "data": "name"},
+			  {"data": "lastUpdate"},
+			]
+		});
 	});
 	</script>
 </body>

@@ -17,7 +17,9 @@
 package com.albertogaona.centi.controller;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -35,7 +37,7 @@ import com.albertogaona.centi.service.DeviceService;
 public class DefaultController {
 
 	@Autowired
-	DeviceService deviceService;
+	private DeviceService deviceService;
 	
     @RequestMapping("/")
     public String index(Model model) {
@@ -48,8 +50,10 @@ public class DefaultController {
     }
     
     @RequestMapping("/getDevices")
-    public @ResponseBody List<Device> getDevices(Model model) {
-    	return deviceService.findAll();
+    public @ResponseBody Map<String, List<Device>>getDevices(Model model) {
+    	Map<String, List<Device>> result = new HashMap<String, List<Device>>();
+    	result.put("data", deviceService.findAll());
+    	return result;
     }
     
     
