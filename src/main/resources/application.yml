@@ -12,3 +12,10 @@ spring:
 spring:
   profiles: prod
   # note that thymeleaf.cache: true default value is used!
+  
+---
+
+spring:
+  profiles: test
+  
+  
