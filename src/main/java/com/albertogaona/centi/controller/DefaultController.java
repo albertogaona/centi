@@ -16,10 +16,11 @@
 
 package com.albertogaona.centi.controller;
 
-import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+
+import javax.servlet.http.HttpServletRequest;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -28,6 +29,8 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.albertogaona.centi.bean.Device;
+import com.albertogaona.centi.dto.PagedList;
+import com.albertogaona.centi.dto.PagingRequest;
 import com.albertogaona.centi.service.DeviceService;
 
 /**
@@ -50,9 +53,26 @@ public class DefaultController {
     }
     
     @RequestMapping("/getDevices")
-    public @ResponseBody Map<String, List<Device>>getDevices(Model model) {
-    	Map<String, List<Device>> result = new HashMap<String, List<Device>>();
-    	result.put("data", deviceService.findAll());
+    public @ResponseBody Map<String, Object>getDevices(HttpServletRequest request) {
+    	PagingRequest pagingRequest = new PagingRequest();
+    	int start = Integer.parseInt(request.getParameter("start"));
+    	int length = Integer.parseInt(request.getParameter("length"));
+    	int orderColumn = Integer.parseInt(request.getParameter("order[0][column]"));
+    	
+    	pagingRequest.setStart(start);
+    	pagingRequest.setLength(length);
+    	pagingRequest.setSearch(request.getParameter("search"));
+    	pagingRequest.setOrderDir(request.getParameter("order[0][dir]"));
+    	pagingRequest.setOrderColumn(orderColumn);
+    	pagingRequest.setColumnData(new String[]{"id", "name", "last_update"});
+    	
+    	
+    	Map<String, Object> result = new HashMap<String, Object>();
+    	PagedList<Device> devicePage = deviceService.findPage(pagingRequest);
+    	result.put("data", devicePage.getData());
+    	result.put("recordsTotal", new Integer(devicePage.getTotalRecords()));
+    	result.put("recordsFiltered", new Integer(devicePage.getTotalRecords()));
+    	result.put("draw", request.getParameter("draw"));
     	return result;
     }
     
